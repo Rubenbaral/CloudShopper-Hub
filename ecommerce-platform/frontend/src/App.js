@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import ProductList from './components/ProductList';
 import Footer from './components/Footer';
+import Home from './components/Home';
+
 
 function App() {
   return (
@@ -12,7 +14,7 @@ function App() {
         <main className="flex-1">
           <Switch>
             <Route path="/" exact>
-              {/* Home page content or component */}
+              <Home />
             </Route>
             <Route path="/products">
               <ProductList />
