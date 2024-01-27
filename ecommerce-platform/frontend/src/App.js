@@ -20,6 +20,18 @@ function App() {
     }
   };
 
+  const removeFromCart = (productId) => {
+    setCartItems(cartItems.filter(item => item.id !== productId));
+  };
+
+  const updateQuantity = (productId, quantity) => {
+    if (quantity <= 0) {
+      removeFromCart(productId);
+    } else {
+      setCartItems(cartItems.map(item => item.id === productId ? { ...item, quantity } : item));
+    }
+  };
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
@@ -33,7 +45,7 @@ function App() {
               <ProductList products={products} onAddToCart={addToCart} />
             </Route>
             <Route path="/cart">
-              <Cart cartItems={cartItems} />
+              <Cart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />
             </Route>
             {/* Additional routes can be added here */}
           </Switch>
