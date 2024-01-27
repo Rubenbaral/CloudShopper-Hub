@@ -1,19 +1,13 @@
 // src/components/Cart.js
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const Cart = () => {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    // Fetch cart items from local storage or API
-  }, []);
-
+const Cart = ({ cartItems }) => {
   return (
     <div>
       <h2>Your Shopping Cart</h2>
-      {items.length > 0 ? (
-        items.map(item => (
+      {cartItems.length > 0 ? (
+        cartItems.map(item => (
           <div key={item.id}>
             <h3>{item.name}</h3>
             <p>Quantity: {item.quantity}</p>
