@@ -3,10 +3,15 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import Home from './components/Home';
 import ProductList from './components/ProductList';
+import ProductDetails from './components/ProductDetails';
+import Cart from './components/Cart';
+import Checkout from './components/Checkout';
+import Login from './components/Login';
+import Register from './components/Register'; // Ensure this import is correct
 import Footer from './components/Footer';
-import Cart from '../../src/components/Cart';
-import products from './data/products'; // Mock product data
+import products from './data/products';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -34,18 +39,19 @@ function App() {
 
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<div>Home Page Content</div>} exact />
-            <Route path="/products" element={<ProductList products={products} onAddToCart={addToCart} />} />
-            <Route path="/cart" element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
-            {/* Additional routes can be added here */}
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <Header />
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<ProductList products={products} onAddToCart={addToCart} />} />
+          <Route path="/products/:productId" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/register" element={<Register />} /> {/* Add this line */}
+        </Routes>
+      </main>
+      <Footer />
     </Router>
   );
 }

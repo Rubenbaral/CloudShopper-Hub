@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.home-background {
+  background-image: url('Best Free 4k video.mp4'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh; /* Adjust height as needed */
+}
