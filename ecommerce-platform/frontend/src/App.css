@@ -43,3 +43,23 @@
   background-position: center;
   min-height: 100vh; /* Adjust height as needed */
 }
+
+/* Add to App.css or index.css */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root, .App { /* If your main div has a different class or id, use that instead of .App */
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+main {
+  flex: 1; /* This will allow the main content to expand and push the footer down */
+}
+
+footer {
+  flex-shrink: 0; /* This will keep the footer from growing */
+}
